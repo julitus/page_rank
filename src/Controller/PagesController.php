@@ -71,9 +71,22 @@ class PagesController extends AppController
     public function search() {
 
         $output = [];
-        exec ("ping -c 4 192.168.43.89", $output, $return_var);
+        //$article = $this->Articles->newEntity();
+        if ($this->request->is('post')) {
+            /*$article = $this->Articles->patchEntity($article, $this->request->getData());
+            if ($this->Articles->save($article)) {
+                $this->Flash->success(__('Your article has been saved.'));
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('Unable to add your article.'));*/
+            exec ("ping -c 4 192.168.43.89", $output, $return_var);
+        }
+        $this->set('output', $output);
+
+        
+        
         /*debug($output);
         exit();*/
-        $this->set('output', $output);
+        
     }
 }
