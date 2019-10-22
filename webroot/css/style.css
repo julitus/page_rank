@@ -6930,8 +6930,13 @@ tbody tr td:last-child {
   font-size: 13px;
   font-weight: 700;
 }
+.result-search-title span {
+  font-size: 13px;
+  float: right;
+  color: blue;
+}
 .result-search-content {
   font-size: 12px;
-  overflow: hidden;
-  height: 50px;
+  /*overflow: hidden;*/
+  /*height: 50px;*/
 }

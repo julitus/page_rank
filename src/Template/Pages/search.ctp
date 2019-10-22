@@ -13,23 +13,16 @@
             </div>
         </div>
 
-        <?php if(!empty($output)): ?>
+        <?php if(!empty($results)): ?>
 	        <div class="col-lg-10">
 	        	<div class="login-content card">
 
-	        		<?php foreach ($output as $key => $out): ?>
-	        			
-	        			<?php if ($key % 2 == 0): ?>
+	        		<?php foreach ($results as $key => $res): ?>
 
 	        				<div class="result-search">
-	        					<div class="result-search-title"> <?= h($out) ?> </div>
-
-	        			<?php else: ?>
-
-	        					<div class="result-search-content"> <?= $this->Text->autoParagraph($out) ?> </div>
+	        					<div class="result-search-title"> <?= h($res['title']) ?>  <span> ( <?= $res['rank'] ?> ) </span></div>
+	        					<div class="result-search-content"> <?= $this->Text->autoParagraph($res['content']) ?> </div>
 	        				</div>
-
-	        			<?php endif; ?>
 
 	        		<?php endforeach; ?>
 
@@ -40,4 +33,4 @@
     </div>
 </div>
 
-<!--?php debug($output); ?-->
+<!--?php debug($results); ?-->
