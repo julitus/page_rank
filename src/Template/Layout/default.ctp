@@ -26,15 +26,31 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
+    <!--?= $this->Html->css('base.css') ?-->
+    <!--?= $this->Html->css('cake.css') ?-->
+
+    <?= $this->Html->css('bootstrap.min.css') ?>
+    <?= $this->Html->css('helper.css') ?>
+    <?= $this->Html->css('style.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
+<body class="fix-header fix-sidebar">
+
+    <div id="main-wrapper">
+
+        <div class="unix-login">
+
+            <!--?= $this->Flash->render() ?-->
+            <?= $this->fetch('content') ?>
+
+        </div>
+
+    </div>
+
+    <!--nav class="top-bar expanded" data-topbar role="navigation">
         <ul class="title-area large-3 medium-4 columns">
             <li class="name">
                 <h1><a href=""><?= $this->fetch('title') ?></a></h1>
@@ -46,12 +62,17 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
             </ul>
         </div>
-    </nav>
-    <?= $this->Flash->render() ?>
-    <div class="container clearfix">
+    </nav-->
+    <!--?= $this->Flash->render() ?-->
+    <!--div class="container clearfix">
         <?= $this->fetch('content') ?>
-    </div>
+    </div-->
     <footer>
+
+    <?= $this->Html->script('jquery.min.js') ?>
+    <?= $this->Html->script('bootstrap.min.js') ?>
+    <?= $this->Html->script('scripts.js') ?>
+    
     </footer>
 </body>
 </html>
