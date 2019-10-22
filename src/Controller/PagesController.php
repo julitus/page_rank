@@ -18,6 +18,7 @@ use Cake\Core\Configure;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\ORM\TableRegistry;
 
 /**
  * Static content controller
@@ -71,15 +72,26 @@ class PagesController extends AppController
     public function search() {
 
         $output = [];
-        //$article = $this->Articles->newEntity();
         if ($this->request->is('post')) {
+            //$cmd = "java -jar /home/hadoop/Documents/Page_Rank_WikiPedia/InvertedIndexer.jar input/ \"William\""
+            exec ("cd /home/hadoop/Documents/Page_Rank_WikiPedia/;  java -jar InvertedIndexer.jar input/ \"William\"", $output, $return_var);
+
+            debug($output);
+            exit();
+
+            $pages = TableRegistry::get('Pages');
+
+
+
+            $data = $pages->find('all')->where(['title LIKE' => '%'.$this->request->data['text'].'%'])->first();
+            //debug($data->toArray()); exit();
             /*$article = $this->Articles->patchEntity($article, $this->request->getData());
             if ($this->Articles->save($article)) {
                 $this->Flash->success(__('Your article has been saved.'));
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('Unable to add your article.'));*/
-            exec ("ping -c 4 192.168.43.89", $output, $return_var);
+            
         }
         $this->set('output', $output);
 
